@@ -1,4 +1,4 @@
 # blog app in reactjs
-a simple blog app iwith dummyjson api in reactjs
+a simple blog app with dummyjson api in reactjs
 
 
