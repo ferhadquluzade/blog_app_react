@@ -1,32 +1,15 @@
-import PostList from "./components/PostList";
-import { usePosts } from "./hooks/usePosts";
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import PostsPage from './pages/PostsPage';
 
 function App() {
-
-  const  [posts,total,loading,error,loadMore] = usePosts();
- 
   return (
-    <div className="container">
-      <h1 className="section-title">My personal blog</h1>
-      <div>
-        <small>Total {total} posts</small>
-      </div>
-      <PostList loading={loading} error={error} posts={posts} />
-
-      <div className="load-more">
-      
-        {posts.length < total && (
-         
-         <button disabled={loading}
-            onClick={loadMore}
-            type="button"
-            className="btn btn-primary w-100 mb-2"
-          >
-            {loading ? "loading" : "Load more"}
-          </button>
-        )}
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/posts" element={<PostsPage />} />
+    </Routes>
   );
 }
 

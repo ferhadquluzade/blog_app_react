@@ -1,8 +1,8 @@
 import React from 'react';
 
-function PostItem({ post }) {
+function PostItem({ post, onLike }) {
   return (
-    <div className="post" key={post.id}>
+    <div className="post">
       <h4>{post.title}</h4>
       <p>{post.body}</p>
       <p className="footer">
@@ -11,7 +11,7 @@ function PostItem({ post }) {
             <span key={tag} className="tag">{tag}</span>
           ))}
         </span>
-        <span>❤️ {" "} {post.reactions}</span>
+        <span>❤️{" "}{post.reactions}</span>
       </p>
     </div>
   );
