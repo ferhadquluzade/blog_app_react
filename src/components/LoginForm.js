@@ -1,11 +1,27 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 function LoginPage() {
+  const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   function handleFormSubmit(e) {
-    // e.preventDefault();
-    console.log({ username, password });
+    e.preventDefault();
+    fetch("https://dummyjson.com/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "kminchelle",
+        password: "0lelplR",
+        // expiresInMins: 60, // optional
+      }),
+    })
+      .then((res) => res.json())
+      .then(navigate("/posts"))
+      .then(document.getElementById("root").style.backgroundColor = "white" );
+    
+    
   }
 
   return (
@@ -15,7 +31,7 @@ function LoginPage() {
           <div className="d-flex justify-content-center align-item-center flex-column vh-100">
             <div className="login-form d-flex justify-content-center align-item-center flex-column ">
               <h3 className="text-center">Welcome</h3>
-             <hr></hr>
+              <hr></hr>
               <div className="group">
                 <h5>
                   <label htmlFor="username">Username:</label>
